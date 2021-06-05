@@ -3,8 +3,16 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.config/nvim/plugged')
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
 	Plug 'preservim/NERDTree'
+
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" C#
+	Plug 'dense-analysis/ale'
+	Plug 'OmniSharp/omnisharp-vim'
+
 	Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 	Plug 'tikhomirov/vim-glsl'
 	Plug 'puremourning/vimspector'
@@ -16,8 +24,6 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 set wildmenu
-set wildmode=list:full
-set wildignorecase
 set wrap
 set number relativenumber
 set background=dark
@@ -29,6 +35,7 @@ set cursorline
 set shiftwidth=0
 set softtabstop=2
 set tabstop=4
+set scrolloff=5
 set splitright splitbelow
 
 let g:lightline = { 'colorscheme': 'onedark' }
@@ -56,8 +63,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 "Tab switching
-nnoremap <M-l> :tabnext<CR>
 nnoremap <M-h> :tabprevious<CR>
+nnoremap <M-l> :tabnext<CR>
 
 "Open terminal in new tab
 nnoremap <Leader>TT :tabe<CR>:terminal<CR>i
@@ -68,6 +75,36 @@ nnoremap <Leader>TS :vs<CR>:terminal<CR>i
 "NERDTree
 nnoremap <A-1> :NERDTreeToggleVCS<CR>
 nnoremap <A-F1> :NERDTreeFind<CR>
+
+"fzf
+nnoremap <expr> <Leader>ff (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<CR>"
+nnoremap <Leader>fb :Buffers<CR>
+
+"Lazygit
+nnoremap <Leader>lg :LazyGit<CR>
+
+"C#
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_selector_findusages = 'fzf'
+
+augroup omnisharp_commands
+  autocmd!
+  autocmd FileType cs nmap <silent> <buffer> gd <Plug>(omnisharp_go_to_definition)
+  autocmd FileType cs nmap <silent> <buffer> pd <Plug>(omnisharp_preview_definition)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>fu <Plug>(omnisharp_find_usages)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>fi <Plug>(omnisharp_find_implementations)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>pi <Plug>(omnisharp_preview_implementations)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ost <Plug>(omnisharp_type_lookup)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>doc <Plug>(omnisharp_documentation)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>fs <Plug>(omnisharp_find_symbol)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>fx <Plug>(omnisharp_fix_usings)
+  autocmd FileType cs nmap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>rm <Plug>(omnisharp_rename) 
+  autocmd FileType cs nmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
+  autocmd FileType cs vmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
+  autocmd FileType cs xmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
+augroup end
 
 "Wrapping
 vnoremap <Leader>w( <Esc>a)<Esc>`<i(<esc>`>
