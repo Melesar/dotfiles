@@ -68,3 +68,9 @@ abbr -a pg ~/Documents/Programs/
 abbr -a pj ~/Documents/Projects/
 abbr -a diskspace ncdu
 abbr -a fixsound pulseaudio --kill
+
+switch (uname)
+case Darwin
+    set PATH $PATH /opt/homebrew/bin
+end
+
