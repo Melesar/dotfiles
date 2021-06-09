@@ -62,6 +62,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+nnoremap <Leader>bda :bufdo bd
+
 "Tab switching
 nnoremap <M-h> :tabprevious<CR>
 nnoremap <M-l> :tabnext<CR>
@@ -73,8 +75,8 @@ nnoremap <Leader>TT :tabe<CR>:terminal<CR>i
 nnoremap <Leader>TS :vs<CR>:terminal<CR>i
 
 "NERDTree
-nnoremap <A-1> :NERDTreeToggleVCS<CR>
-nnoremap <A-F1> :NERDTreeFind<CR>
+nnoremap <Leader>ntt :NERDTreeToggleVCS<CR>
+nnoremap <Leader>ntf :NERDTreeFind<CR>
 
 "fzf
 nnoremap <expr> <Leader>ff (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<CR>"
@@ -121,9 +123,8 @@ vnoremap <Leader>w" <Esc>a"<Esc>`<i"<esc>`>
 vnoremap <Leader>w{ <Esc>a}<Esc>`<i{<esc>`>
 vnoremap <Leader>w< <Esc>a><Esc>`<i<<esc>`>
 
-"Make projects
-nnoremap <Leader>mm :make!<CR>
-nnoremap <Leader>mr :make! run<CR>
+"Create a file in the directory of the current file
+nnoremap <Leader>mf :e %:p:h
 
 "Vim settings
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
