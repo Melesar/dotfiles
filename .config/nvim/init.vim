@@ -85,6 +85,7 @@ nnoremap <Leader>fb :Buffers<CR>
 "vimspector
 nnoremap <Leader>dd :call vimspector#Launch()<CR>
 nnoremap <Leader>de :call vimspector#Reset()<CR>
+nnoremap <Leader>dr :call vimspector#Restart()<CR>
 nnoremap <Leader>d<space> :call vimspector#Continue()<CR>
 nnoremap <Leader>dj :call vimspector#StepOver()<CR>
 nnoremap <Leader>dl :call vimspector#StepInto()<CR>
@@ -97,6 +98,7 @@ nnoremap <Leader>lg :LazyGit<CR>
 "C#
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 let g:OmniSharp_selector_ui = 'fzf'
+"let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_findusages = 'fzf'
 
 augroup omnisharp_commands
@@ -115,6 +117,7 @@ augroup omnisharp_commands
   autocmd FileType cs nmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
   autocmd FileType cs vmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
   autocmd FileType cs xmap <silent> <buffer> <Leader>ca <Plug>(omnisharp_code_actions)
+  autocmd FileType cs nmap <silent> <buffer> <Leader>omrs <Plug>(omnisharp_restart_server)
 augroup end
 
 "Wrapping
