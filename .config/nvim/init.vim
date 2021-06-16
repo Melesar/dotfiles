@@ -62,7 +62,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-nnoremap <Leader>bda :bufdo bd
+nnoremap <Leader>bda :bufdo bd<CR>
 
 "Tab switching
 nnoremap <M-h> :tabprevious<CR>
