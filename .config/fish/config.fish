@@ -1,4 +1,3 @@
-#neofetch
 set fish_greeting ""
 
 #==== FUNCTIONS ===============================================================
@@ -19,10 +18,6 @@ function vim
 	nvim $argv
 end
 
-function vimrc
-	nvim ~/.config/nvim/init.vim
-end
-
 function passupd
 	pass git pull orign 
 	pass git push orign master
@@ -37,36 +32,23 @@ function findl
 end
 
 function gopro
-	~/.scripts/go_to_project.sh
+	cd (fd . ~/Documents/Projects -t d -d 1 | fzf)
 end
 
-function pi
-    ssh pi@192.168.1.251
-end
-
-function picam_connect
-	bash -c "printf '\xac\xdc' > /dev/udp/192.168.1.251/8085"
-end
-
-function picam_disconnect
-	bash -c "printf '\xdc\xac' > /dev/udp/192.168.1.251/8085"
-end
-
-function lg
-	lazygit
+function edot
+	~/.scripts/edit_dotfile.sh
 end
 
 #==== Aliases =================================================================
 
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias ls="exa"
+alias ll="exa -l"
+alias la="exa -la"
+alias lg="lazygit"
 
 #==== Abbreviations ===========================================================
 
-abbr -a serssh ssh melesar@87.99.0.192 
-abbr -a cpg cd ~/Documents/Programs/
-abbr -a cpj cd ~/Documents/Projects/
-abbr -a pg ~/Documents/Programs/
-abbr -a pj ~/Documents/Projects/
 abbr -a diskspace ncdu
 abbr -a fixsound pulseaudio --kill
 
