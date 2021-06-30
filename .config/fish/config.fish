@@ -39,6 +39,10 @@ function edot
 	~/.scripts/edit_dotfile.sh
 end
 
+function epdf
+	~/.scripts/open_pdf.sh
+end
+
 #==== Aliases =================================================================
 
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
