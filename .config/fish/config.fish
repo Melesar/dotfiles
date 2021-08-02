@@ -31,7 +31,7 @@ function findl
     find ~ -iname $argv 
 end
 
-function gopro
+function gp
 	cd (fd . ~/Documents/Projects -t d -d 1 | fzf)
 end
 
@@ -60,4 +60,3 @@ switch (uname)
 case Darwin
     set PATH $PATH /opt/homebrew/bin
 end
-
