@@ -37,6 +37,7 @@ set softtabstop=2
 set tabstop=4
 set scrolloff=5
 set splitright splitbelow
+set noswapfile
 
 let g:lightline = { 'colorscheme': 'onedark' }
 colorscheme onedark

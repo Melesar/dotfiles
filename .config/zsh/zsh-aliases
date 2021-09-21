@@ -1,0 +1,11 @@
+#!/bin/sh
+
+alias lg='lazygit'
+alias gp='cd $(fd . ~/Documents/Projects -t d -d 1 | fzf)'
+alias ls="exa"
+alias ll="exa -l"
+alias la="exa -la"
+alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+alias edot="~/.scripts/edit_dotfile.sh"
+alias epdf="~/.scripts/open_pdf.sh"
