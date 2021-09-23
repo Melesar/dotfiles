@@ -9,3 +9,5 @@ alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 alias edot="~/.scripts/edit_dotfile.sh"
 alias epdf="~/.scripts/open_pdf.sh"
+
+alias sysupdate="sudo apt update && sudo apt upgrade"
