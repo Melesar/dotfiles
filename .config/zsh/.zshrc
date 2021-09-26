@@ -2,6 +2,7 @@ setopt autocd menucomplete nomatch
 unsetopt beep
 
 autoload -Uz colors && colors
+zle_highlight=('paste:none')
 
 # completions
 autoload -Uz compinit
