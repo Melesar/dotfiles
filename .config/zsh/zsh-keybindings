@@ -1,0 +1,5 @@
+#!/bin/sh
+
+bindkey -s '^p' 'gp^M'
+bindkey -s '^o' 'epdf^M'
+bindkey -s '^d' 'edot^M'

@@ -17,6 +17,7 @@ source "$ZDOTDIR/zsh-functions"
 zsh_add_file "zsh-promt"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-vim-mode"
+zsh_add_file "zsh-keybindings"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
