@@ -44,10 +44,10 @@ colorscheme onedark
 
 set path=$PWD/**
 
+let mapleader=" "
+
 "Coc configuration
 source ~/.config/nvim/plugin-config/coc.vim
-
-let mapleader=" "
 
 "Resize buffers
 nnoremap <Up> :resize +2<CR>
