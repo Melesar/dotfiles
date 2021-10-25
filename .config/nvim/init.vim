@@ -21,6 +21,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Color scheme
 	Plug 'tyrannicaltoucan/vim-deep-space'
 	Plug 'joshdick/onedark.vim'
+	Plug 'romgrk/doom-one.vim'
 call plug#end()
 
 set wildmenu
@@ -40,7 +41,8 @@ set splitright splitbelow
 set noswapfile
 
 let g:lightline = { 'colorscheme': 'onedark' }
-colorscheme onedark
+let g:doom_one_terminal_colors = v:true
+colorscheme doom-one
 
 set path=$PWD/**
 
