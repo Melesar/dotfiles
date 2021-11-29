@@ -1,6 +1,11 @@
 setopt autocd menucomplete nomatch
 unsetopt beep
 
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=1000
+setopt share_history
+
 autoload -Uz colors && colors
 zle_highlight=('paste:none')
 
@@ -14,10 +19,13 @@ _comp_options+=(globdots)		# Include hidden files.
 
 source "$ZDOTDIR/zsh-functions"
 
+export EDITOR=nvim
+
 zsh_add_file "zsh-promt"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-keybindings"
+zsh_add_file "zsh-zoxide"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
