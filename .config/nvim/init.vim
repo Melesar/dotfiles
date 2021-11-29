@@ -8,6 +8,8 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'preservim/NERDTree'
 
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'voldikss/vim-floaterm'
+	Plug 'tpope/vim-commentary'
 
 " C#
 	Plug 'dense-analysis/ale'
@@ -71,11 +73,10 @@ nnoremap <Leader>bda :bufdo bd<CR>
 nnoremap <M-h> :tabprevious<CR>
 nnoremap <M-l> :tabnext<CR>
 
-"Open terminal in new tab
-nnoremap <Leader>TT :tabe<CR>:terminal<CR>i
-
-"Open terminal in a vertical split
-nnoremap <Leader>TS :vs<CR>:terminal<CR>i
+nnoremap <leader>tt :FloatermToggle<CR>
+nnoremap <leader>tn :FloatermNew<CR>
+nnoremap <leader>tj :FloatermNext<CR>
+nnoremap <leader>tk :FloatermPrev<CR>
 
 "NERDTree
 nnoremap <Leader>ntt :NERDTreeToggleVCS<CR>
