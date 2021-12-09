@@ -30,3 +30,10 @@ zsh_add_file "zsh-zoxide"
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+
+
+os=$(uname)
+case $os in
+    Darwin)
+		path+=('/opt/homebrew/bin') ;;
+esac
