@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'voldikss/vim-floaterm'
 	Plug 'tpope/vim-commentary'
+	Plug 'tpope/vim-fugitive'
 
 " C#
 	Plug 'dense-analysis/ale'
