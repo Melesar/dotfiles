@@ -49,11 +49,28 @@ screens = [
                        fontsize = 28,
                        foreground='#2f343f'
                        ), 
+                widget.KeyboardLayout(
+                       configured_keyboards = ['pl'],
+                       background = "#2f343f"
+                       ),
                 widget.TextBox(                                                                    
-                       text = "Here goes screen brightness",
+                       text = '',
                        padding = 0,
-                       fontsize = 13,
-                       background="#2f343f",
+                       fontsize = 28,
+                       foreground='#2f343f'
+                       ),
+                widget.TextBox(
+                       text = '',
+                       padding = 0,
+                       fontsize = 28,
+                       foreground='#2f343f'
+                       ),    
+                widget.Backlight(
+                        backlight_name = "intel_backlight",
+                        format = "🖵 {percent:2.0%}",
+                        fontsize = 18,
+                        background = "#2f343f",
+                        foreground = colors[5],
                        ),
                 widget.TextBox(                                                                    
                        text = '',
@@ -68,8 +85,7 @@ screens = [
                        foreground='#2f343f'
                        ),    
                 volume,
-                widget.TextBox(                                                                    
-                       text = '',
+                widget.TextBox(                                                                    text = '',
                        padding = 0,
                        fontsize = 28,
                        foreground='#2f343f',
