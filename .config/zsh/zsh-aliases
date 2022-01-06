@@ -6,7 +6,7 @@ alias ls="exa"
 alias ll="exa -l"
 alias la="exa -la"
 alias dots="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias dotsadd='dots add $(dots status -s | cut -d\  -f 3 | fzf)'
+alias dotsadd='dots add $(dots status -s | cut -d\  -f 3 | fzf -m)'
 
 alias edot="~/.scripts/edit_dotfile.sh"
 alias epdf="~/.scripts/open_pdf.sh"
