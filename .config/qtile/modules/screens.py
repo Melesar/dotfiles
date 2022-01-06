@@ -32,16 +32,6 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.CurrentLayoutIcon(scale=0.75),
-                widget.CheckUpdates(
-                    update_interval=1800,
-                    distro="Arch_yay",
-                    display_format="{updates} Updates",
-                    foreground="#ffffff",
-                    mouse_callbacks={
-                        'Button1':
-                        lambda: qtile.cmd_spawn(terminal + ' -e yay -Syu')
-                    },
-                    background="#2f343f"),
                 widget.Systray(icon_size = 20),
                 widget.TextBox(
                        text = '',
@@ -68,7 +58,7 @@ screens = [
                 widget.Backlight(
                         backlight_name = "intel_backlight",
                         format = "🖵 {percent:2.0%}",
-                        fontsize = 18,
+                        fontsize = 14,
                         background = "#2f343f",
                         foreground = colors[5],
                        ),
@@ -84,8 +74,33 @@ screens = [
                        fontsize = 28,
                        foreground='#2f343f'
                        ),    
-                volume,
-                widget.TextBox(                                                                    text = '',
+                MyVolume(
+                    fontsize=14,
+                    font='Font Awesome 5 Free',
+                    foreground=colors[4],
+                    background='#2f343f',
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("pavucontrol")}
+                ),
+                widget.TextBox(
+                       text = '',
+                       padding = 0,
+                       fontsize = 28,
+                       foreground='#2f343f',
+                       ),   
+                widget.TextBox(
+                       text = '',
+                       padding = 0,
+                       fontsize = 28,
+                       foreground='#2f343f'
+                       ),    
+                widget.Battery(
+                       background = "#2f343f",
+                       format = "{char} 🗲{percent:2.0%}",
+                       foreground = colors[5],
+                       fontsize = 14,
+                        ),
+                widget.TextBox(
+                       text = '',
                        padding = 0,
                        fontsize = 28,
                        foreground='#2f343f',

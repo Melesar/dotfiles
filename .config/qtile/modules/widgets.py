@@ -34,27 +34,3 @@ class MyVolume(widget.Volume):
             with open(self.wob, 'a') as f:
                 f.write(str(self.volume) + "\n")
 
-volume = MyVolume(
-    fontsize=18,
-    font='Font Awesome 5 Free',
-    foreground=colors[4],
-    background='#2f343f',
-    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("pavucontrol")}
-)
-
-class ScreenBrightness(widget.Backlight):
-    def _configure(self, qtile, bar):
-        widget.Backlight._configure(self, qtile, bar)
-        self.text = str("bb")
-
-    def _update_drawer(self, wob=False):
-        self.text = "New brightness"
-        self.draw()
-
-brightness = ScreenBrightness(
-    backlight_name = "intel_backlight",
-    fontsize=18,
-    font='Font Awesome 5 Free',
-    foreground=colors[5],
-    background='#2f343f'
-)
