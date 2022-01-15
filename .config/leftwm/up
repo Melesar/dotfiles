@@ -1,0 +1,3 @@
+#!/bin/sh
+
+setxkbmap -layout pl,ru,ua -option grp:lalt_lshift_toggle # set keyboard layout
