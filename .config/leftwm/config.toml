@@ -56,6 +56,12 @@ key = "p"
 
 [[keybind]]
 command = "Execute"
+value = "$HOME/.scripts/open_unity.sh"
+modifier = ["modkey", "Shift"]
+key = "u"
+
+[[keybind]]
+command = "Execute"
 value = "$HOME/.config/rofi/powermenu.sh"
 modifier = ["modkey", "Shift", "Control"]
 key = "p"
