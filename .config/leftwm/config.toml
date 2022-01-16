@@ -115,10 +115,30 @@ modifier = ["modkey", "Shift"]
 key = "j"
 
 [[keybind]]
+command = "MoveWindowToPreviousWorkspace"
+modifier = ["modkey", "Shift", "Control"]
+key = "h"
+
+[[keybind]]
+command = "MoveWindowToNextWorkspace"
+modifier = ["modkey", "Shift", "Control"]
+key = "l"
+
+[[keybind]]
 command = "ToggleFullScreen"
 value = ""
 modifier = ["modkey"]
 key = "m"
+
+[[keybind]]
+command = "FocusWorkspaceNext"
+modifier = ["modkey", "Control"]
+key = "l"
+
+[[keybind]]
+command = "FocusWorkspacePrevious"
+modifier = ["modkey", "Control"]
+key = "h"
 
 [[keybind]]
 command = "ToggleFloating"
