@@ -5,16 +5,21 @@ filetype plugin indent on
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	Plug 'preservim/NERDTree'
+	Plug 'neovim/nvim-lspconfig'
 
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'hrsh7th/cmp-cmdline'
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
+	Plug 'mfussenegger/nvim-dap'
+
+	Plug 'SirVer/ultisnips'
 	Plug 'voldikss/vim-floaterm'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
-
-" C#
-	Plug 'dense-analysis/ale'
-	Plug 'OmniSharp/omnisharp-vim'
 
 	Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 	Plug 'tikhomirov/vim-glsl'
@@ -43,6 +48,8 @@ set scrolloff=5
 set splitright splitbelow
 set noswapfile
 
+set completeopt=menuone,noinsert,noselect
+
 let g:lightline = { 'colorscheme': 'onedark' }
 let g:doom_one_terminal_colors = v:true
 colorscheme doom-one
@@ -51,8 +58,9 @@ set path=$PWD/**
 
 let mapleader=" "
 
-"Coc configuration
-source ~/.config/nvim/plugin-config/coc.vim
+luafile ~/.config/nvim/lsp_config.lua
+luafile ~/.config/nvim/dap_config.lua
+
 
 "Resize buffers
 nnoremap <Up> :resize +2<CR>
@@ -100,6 +108,19 @@ nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
 "Lazygit
 nnoremap <Leader>lg :LazyGit<CR>
 
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> ge    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
+
+nnoremap <silent> <leader>a <cmd>lua vim.lsp.buf.code_action()<CR>
+xmap <silent> <leader>a <cmd>lua vim.lsp.buf.range_code_action()<CR>
+
+
 "C#
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 let g:OmniSharp_selector_ui = 'fzf'
@@ -125,25 +146,12 @@ augroup omnisharp_commands
   autocmd FileType cs nmap <silent> <buffer> <Leader>omrs <Plug>(omnisharp_restart_server)
 augroup end
 
-"Wrapping
-vnoremap <Leader>w( <Esc>a)<Esc>`<i(<esc>`>
-vnoremap <Leader>w" <Esc>a"<Esc>`<i"<esc>`>
-vnoremap <Leader>w{ <Esc>a}<Esc>`<i{<esc>`>
-vnoremap <Leader>w< <Esc>a><Esc>`<i<<esc>`>
-
-"Create a file in the directory of the current file
-nnoremap <Leader>mf :e %:p:h
-
 "Vim settings
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <Leader>sv :w<CR>:source $MYVIMRC<CR>
 
 "Disable search highlight
 nnoremap <esc> :noh<CR>
-
-"Remap ESC key
-inoremap ii <ESC>
-vnoremap ii <ESC>
 
 function! SourceIfExists(file)
   if filereadable(expand(a:file))
