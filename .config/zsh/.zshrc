@@ -37,3 +37,5 @@ case $os in
     Darwin)
 		path+=('/opt/homebrew/bin') ;;
 esac
+
+path+=("$HOME/.local/bin")
