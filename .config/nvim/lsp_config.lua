@@ -23,7 +23,7 @@ cmp.setup({
     },
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
-		{ name = 'ultisnips' }, -- For ultisnips users.
+		-- { name = 'ultisnips' }, -- For ultisnips users.
 		{ name = 'buffer' },
 	})
 })
@@ -58,4 +58,12 @@ require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true,
 	}
+}
+
+require'lsp_signature'.setup{
+	bind = true,
+	floating_window = true,
+	handler_opts = {
+		border = "rounded"
+	},
 }

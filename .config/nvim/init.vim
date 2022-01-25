@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 	Plug 'mfussenegger/nvim-dap'
+	Plug 'ray-x/lsp_signature.nvim'
 
 	Plug 'SirVer/ultisnips'
 	Plug 'voldikss/vim-floaterm'
@@ -42,11 +43,6 @@ luafile ~/.config/nvim/dap_config.lua
 source ~/.config/nvim/configs/navigation.vim
 source ~/.config/nvim/configs/opts.vim
 source ~/.config/nvim/configs/keybindings.vim
-
-augroup linting
-	autocmd!
-	autocmd BufWritePost <buffer> lua require('lint').try_lint()
-augroup END
 
 "Vim settings
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
