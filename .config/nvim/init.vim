@@ -32,6 +32,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'tyrannicaltoucan/vim-deep-space'
 	Plug 'joshdick/onedark.vim'
 	Plug 'romgrk/doom-one.vim'
+	Plug 'EdenEast/nightfox.nvim'
 call plug#end()
 
 
