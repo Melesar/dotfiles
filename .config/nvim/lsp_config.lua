@@ -45,4 +45,17 @@ cmp.setup.cmdline(':', {
 })
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 lspconfig.rust_analyzer.setup{capabilities = capabilities}
+lspconfig.omnisharp.setup{
+	cmd = {"omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid())};
+	capabilities = capabilities;
+}
+
+require'nvim-treesitter.configs'.setup {
+	ensure_installed = {"c_sharp", "rust"},
+
+	highlight = {
+		enable = true,
+	}
+}
