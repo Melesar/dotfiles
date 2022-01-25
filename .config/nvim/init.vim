@@ -16,6 +16,8 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 	Plug 'mfussenegger/nvim-dap'
+    Plug 'theHamsta/nvim-dap-virtual-text'
+
 	Plug 'ray-x/lsp_signature.nvim'
 
 	Plug 'SirVer/ultisnips'
@@ -23,6 +25,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
 
+	Plug 'preservim/nerdtree'
 	Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 	Plug 'tikhomirov/vim-glsl'
 	Plug 'puremourning/vimspector'
@@ -34,9 +37,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'romgrk/doom-one.vim'
 	Plug 'EdenEast/nightfox.nvim'
 call plug#end()
-
-
-let config_path="~/.config/nvim"
 
 luafile ~/.config/nvim/lsp_config.lua
 luafile ~/.config/nvim/dap_config.lua

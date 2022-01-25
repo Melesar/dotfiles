@@ -16,6 +16,8 @@ set noswapfile
 
 set completeopt=menuone,noinsert,noselect
 
+let NERDTreeIgnore=['\.meta$', '\~$']
+
 let g:lightline = { 'colorscheme': 'onedark' }
 let g:doom_one_terminal_colors = v:true
 colorscheme duskfox
