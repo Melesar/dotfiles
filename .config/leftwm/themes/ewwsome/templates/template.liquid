@@ -1,0 +1,7 @@
+(box :width 10 :halign "start"
+{% for tag in workspace.tags %}
+	(button :onclick "scripts/change_to_tag {{workspace.index}} {{tag.index}}"
+:class "{%if tag.mine%} tag-focused {%else%} tag  {%endif%}"
+	'{{tag.name}}')
+{% endfor %}
+)

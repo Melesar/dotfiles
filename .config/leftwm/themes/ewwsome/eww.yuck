@@ -1,0 +1,142 @@
+(defvar eww "eww -c $(pwd)")
+
+(defvar vol false)
+(defvar bright false)
+(defvar power false)
+(defvar isdate false)
+
+(defpoll time :interval "1s" "date '+%H:%M'")
+(defpoll date :interval "10h" "date '+%d %b %Y'")
+
+(defpoll battery :interval "1s" :initial 1 "scripts/battery.sh")
+(defpoll volume :interval "1s" :initial 0 "scripts/volume.sh")
+(defpoll brightness :interval "1s" :initial 0 "xbacklight -get") 
+
+(deflisten left-workspaces 'sh scripts/workspaces.sh')
+(deflisten locale :initial "pl" 'xkb-switch -W') 
+
+(defwindow bar  
+           :monitor 0 
+           :geometry (geometry :x "0%"
+                               :y "0px"
+                               :width "100%"
+                               :height "30px"
+                               :anchor "top center")
+           :stacking "fg"
+           :reserve (struts :distance "30px" :side "top")
+           :windowtype "dock" 
+           :wm-ignore false
+  (bar))
+  
+(defwidget bar []
+  (box :class "bar"
+    (workspaces)
+    (clock)
+    (status)))
+  
+(defwidget workspaces[]
+  (box :halign "start" 
+    (literal :content left-workspaces)))
+
+(defwidget clock []
+  (eventbox :onhover "${eww} update isdate=true"
+            :onhoverlost "${eww} update isdate=false"
+    (box :class "clock"
+         :space-evenly false
+         :halign "center" 
+         :spacing 10
+      (label :text "")
+      (label :text time)
+      (revealer :reveal isdate
+                :transition "slideright"
+                :duration "550ms"
+        (label :text "  ${date}")))))
+
+
+(defwidget battery []
+    (circular-progress :value {round(battery,0) - 1}
+                       :tooltip "Battery is ${round(battery, 0)}%" 
+                       :class "battery"
+                       :thickness 10
+                       :start-at 75
+                       :clockwise false))
+ 
+(defwidget locale[] 
+  (box
+        (label :class "locale"
+              :limit-width "2"
+              :show-truncated false
+              :text locale)))
+
+(defwidget volume []
+  (eventbox :onhover "${eww} update vol=true"
+            :onhoverlost "${eww} update vol=false"
+    (box :space-evenly "false"
+         :class "volume"
+         :spacing 3
+      (label :text "墳")
+      (revealer :transition "slideright"
+                :reveal vol
+                :duration "550ms"
+        (scale :value volume
+             :class "volbar"
+             :width 100
+             :orientation "horizontal"
+             :min 0 
+             :max 101
+             :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")))))
+
+
+(defwidget brightness []
+  (eventbox :onhover "${eww} update bright=true"
+            :onhoverlost "${eww} update bright=false"
+    (box :space-evenly "false"
+         :class "brightness"
+         :spacing 3
+      (label :text "")
+      (revealer :transition "slideright"
+                :reveal bright
+                :duration "550ms"
+        (scale :value brightness
+             :class "bribar"
+             :width 100
+             :orientation "horizontal"
+             :min 0 
+             :max 101
+             :onchange "xbacklight -set {}")))))
+  
+(defwidget power []
+  (eventbox :onhover "${eww} update power=true"
+            :onhoverlost "${eww} update power=false"
+    (box :space-evenly "false"
+         :class "powermenu"
+         :spacing "15"
+      (revealer :transition "slideleft"
+                :reveal power 
+                :duration "550ms"
+        (box  :spacing "15"
+          (button :tooltip "Logout"
+                  :onclick "loginctl terminate-user `whoami`"
+            "")
+          (button :tooltip "Reboot"
+                  :onclick "systemctl reboot"
+            "")))
+      (button :tooltip "Shutdown"
+              :onclick "systemctl poweroff"
+        ""))))
+
+(defwidget separator []
+  (label :text "|"))
+     
+(defwidget status []
+  (box :halign "end" :space-evenly "false" :spacing "15"
+    (locale)
+    (separator)
+    (volume)
+    (brightness)
+    (separator)
+    (battery)
+    (separator)
+    (power))) 
+
+

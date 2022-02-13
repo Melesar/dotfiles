@@ -1,0 +1,63 @@
+* { 
+	all: unset;
+}
+
+$background: #1E272B;
+$foreground: #EAD49B;
+$background-alt: #99444444;
+$foreground-alt: #FFFFFF;
+$primary: #ffb52a;
+$secondary: #e60053;
+$alert: #bd2c40;
+$accent: #d99f57;
+
+$col1: #5899E2;
+$col2: #4d7ea8;
+$col3: #E54B4B;
+
+.bar {
+	background-color: $background;
+	color: $foreground;
+	font-family: "Cascadia Code";
+	font-weight: 600; 
+}
+
+.tag {
+	background-color: $background; 
+	min-width: 30px;
+	min-height: 30px;
+}
+
+.tag-focused {
+	background-color: $accent;
+	color: $background;
+	border-radius: 3px;
+}
+
+.powermenu, .battery, .tag, .tag-focused, .clock, .brightness, .volume {
+	font-family: "Symbols Nerd Font"
+}
+
+scale trough {
+	background-color: black;
+	min-width: 80px;
+	min-height: 10px;
+	border-radius: 10px;
+}
+
+.bribar trough highlight {
+	background-color: $foreground;
+	border-radius: 10px;
+}
+
+.volbar trough highlight {
+	background-color: $foreground;
+	border-radius: 10px;
+}
+
+.clock {
+	background-color: $accent;
+	color: $background;
+	border-radius: 3px;
+	padding: 2px 20px;
+}

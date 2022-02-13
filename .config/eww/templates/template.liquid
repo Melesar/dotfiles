@@ -1,6 +1,0 @@
-(box :width 10 :halign "start"
-{% for tag in workspace.tags %}
-	(button :onclick "$HOME/.config/eww/scripts/change_to_tag {{workspace.index}} {{tag.index}}"
-	'{{tag.name}}')
-{% endfor %}
-)
