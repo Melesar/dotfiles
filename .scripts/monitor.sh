@@ -33,7 +33,7 @@ then
 	xrandr --output $primary --off --output $secondary --auto
 elif [ "$selected_option" == "$duplicate" ]
 then
-	echo "Not implemented"
+	xrandr --output $primary --auto --output $secondary --same-as $primary
 elif [ "$selected_option" == "$double" ]
 then
 	xrandr --output $primary --auto --output $secondary --left-of $primary
