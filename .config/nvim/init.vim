@@ -3,8 +3,10 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
+	Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -31,15 +33,20 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'puremourning/vimspector'
 	Plug 'itchyny/lightline.vim'
 	Plug 'ap/vim-css-color'	
+	Plug 'elkowar/yuck.vim'
+	Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+
 " Color scheme
 	Plug 'tyrannicaltoucan/vim-deep-space'
 	Plug 'joshdick/onedark.vim'
 	Plug 'romgrk/doom-one.vim'
 	Plug 'EdenEast/nightfox.nvim'
+	Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 luafile ~/.config/nvim/lsp_config.lua
 luafile ~/.config/nvim/dap_config.lua
+luafile ~/.config/nvim/telescope.lua
 
 source ~/.config/nvim/configs/navigation.vim
 source ~/.config/nvim/configs/opts.vim

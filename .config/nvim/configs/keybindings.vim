@@ -8,9 +8,10 @@ nnoremap <leader>tk :FloatermPrev<CR>
 nnoremap <Leader>ntt :NERDTreeToggleVCS<CR>
 nnoremap <Leader>ntf :NERDTreeFind<CR>
 
-"fzf
-nnoremap <expr> <Leader>ff (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<CR>"
-nnoremap <Leader>fb :Buffers<CR>
+"Telescope
+nnoremap <Leader>ff :Telescope find_files<CR>
+nnoremap <Leader>fb :Telescope buffers<CR>
+nnoremap <Leader>fs :Telescope symbols<CR>
 
 "Lazygit
 nnoremap <Leader>lg :LazyGit<CR>
