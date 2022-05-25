@@ -5,8 +5,8 @@ tags = ["", "", "", "", ""]
 layouts = ["MainAndDeck", "Monocle"]
 layout_mode = "Tag"
 disable_current_tag_swap = false
-focus_behaviour = "ClickTo"
-focus_new_windows = false
+focus_behaviour = "Sloppy"
+focus_new_windows = true
 
 scratchpad = [
 	{ name = "Calculator", value = "gnome-calculator", height = 200, width = 300, x = 810, y = 440},
@@ -15,6 +15,7 @@ scratchpad = [
 window_rules = [
 	{window_class = "Unity", spawn_on_tag = 2},
 	{window_class = "jetbrains-rider", spawn_on_tag = 3},
+	{window_class = "Github.UI", spawn_floating = true},
 ]
 
 [[keybind]]
@@ -61,6 +62,12 @@ key = "p"
 
 [[keybind]]
 command = "Execute"
+value = "$HOME/.scripts/bootstrap.sh toggle"
+modifier = ["modkey", "Control"]
+key = "space"
+
+[[keybind]]
+command = "Execute"
 value = "$HOME/.scripts/open_unity.sh"
 modifier = ["modkey", "Shift"]
 key = "u"
@@ -73,6 +80,12 @@ key = "p"
 
 [[keybind]]
 command = "Execute"
+value = "flameshot gui"
+modifier = ["Control", "Alt"]
+key = "5"
+
+[[keybind]]
+command = "Execute"
 value = "$HOME/.scripts/monitor.sh"
 modifier = ["modkey", "Shift"]
 key = "m"
@@ -82,7 +95,6 @@ command = "Execute"
 value = "thunar"
 modifier = ["modkey", "Shift"]
 key = "f"
-
 
 [[keybind]]
 command = "ToggleScratchPad"
@@ -103,10 +115,10 @@ modifier = ["modkey", "Shift"]
 key = "r"
 
 [[keybind]]
-command = "Execute"
-value = "loginctl kill-session $XDG_SESSION_ID"
-modifier = ["modkey", "Shift"]
-key = "x"
+command = "HardReload"
+value = ""
+modifier = ["modkey", "Control", "Shift"]
+key = "r"
 
 [[keybind]]
 command = "Execute"
