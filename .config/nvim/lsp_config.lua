@@ -14,6 +14,8 @@ cmp.setup({
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+	  ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 'c'}),
+	  ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 'c'}),
       ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
@@ -46,14 +48,19 @@ cmp.setup.cmdline(':', {
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+lspconfig.clangd.setup{capabilities = capabilities}
 lspconfig.rust_analyzer.setup{capabilities = capabilities}
-lspconfig.omnisharp.setup{
-	cmd = {"omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid())};
-	capabilities = capabilities;
-}
+-- lspconfig.csharp_ls.setup{capabilities = capabilities}
+ lspconfig.omnisharp.setup{
+ 	cmd = {"omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid())};
+ 	capabilities = capabilities;
+	flags = {
+		debounce_text_changes = 150,
+	}
+ }
 
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = {"c_sharp", "rust"},
+	ensure_installed = {"c_sharp", "rust", "c"},
 
 	highlight = {
 		enable = true,
