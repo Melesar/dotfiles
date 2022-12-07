@@ -1,20 +1,23 @@
 "Floatterm
-nnoremap <leader>tt :FloatermToggle<CR>
-nnoremap <leader>tn :FloatermNew<CR>
-nnoremap <leader>tj :FloatermNext<CR>
-nnoremap <leader>tk :FloatermPrev<CR>
+nnoremap <leader>tt :ToggleTerm direction=float<CR>
+nnoremap <leader>tv :ToggleTerm direction=vertical size=120<CR>
+nnoremap <leader>th :ToggleTerm direction=horizontal<CR>
 
 "NERDTree
 nnoremap <Leader>ntt :NERDTreeToggleVCS<CR>
 nnoremap <Leader>ntf :NERDTreeFind<CR>
 
 "Telescope
+nnoremap <Leader>ft :Telescope<CR>
 nnoremap <Leader>ff :Telescope find_files<CR>
 nnoremap <Leader>fb :Telescope buffers<CR>
-nnoremap <Leader>fs :Telescope symbols<CR>
+nnoremap <Leader>fs :Telescope lsp_document_symbols<CR>
 
 "Lazygit
 nnoremap <Leader>lg :LazyGit<CR>
+
+"Terminal
+tnoremap <esc><esc> <C-\><C-n>
 
 "LSP
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
@@ -23,6 +26,7 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> ge    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <leader>f    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent> <leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
 

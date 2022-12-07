@@ -13,6 +13,7 @@ set tabstop=4
 set scrolloff=5
 set splitright splitbelow
 set noswapfile
+set signcolumn=yes
 
 set completeopt=menuone,noinsert,noselect
 
@@ -20,8 +21,10 @@ let NERDTreeIgnore=['\.meta$', '\~$']
 
 let g:lightline = { 'colorscheme': 'onedark' }
 let g:doom_one_terminal_colors = v:true
+
+let ayucolor="dark"
 colorscheme duskfox
-"colorscheme doom-one
+"colorscheme ayu
 
 set path=$PWD/**
 

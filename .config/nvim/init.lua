@@ -1,0 +1,6 @@
+require('plugins')
+require('settings')
+require('keybindings')
+require('lsp')
+require('dap_config')
+require('telescope_config')

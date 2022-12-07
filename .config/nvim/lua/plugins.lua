@@ -1,7 +1,4 @@
-syntax on
-
-filetype plugin indent on
-
+vim.cmd([[
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim'
@@ -24,6 +21,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'SirVer/ultisnips'
 	Plug 'voldikss/vim-floaterm'
+	Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
 
@@ -34,6 +32,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'itchyny/lightline.vim'
 	Plug 'ap/vim-css-color'	
 	Plug 'elkowar/yuck.vim'
+	Plug 'ron-rs/ron.vim'
 	Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 
 " Color scheme
@@ -43,42 +42,10 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'EdenEast/nightfox.nvim'
 	Plug 'ayu-theme/ayu-vim'
 call plug#end()
+]])
 
-luafile ~/.config/nvim/lsp_config.lua
-luafile ~/.config/nvim/dap_config.lua
-luafile ~/.config/nvim/telescope.lua
+-- vim.g.NERDTreeIgnore = {'\.meta$', '\~$'}
+-- vim.g.lightline = {'colorscheme': 'onedark'}
+vim.g.doom_one_terminal_colors = true
+vim.g.ayucolor="dark"
 
-source ~/.config/nvim/configs/navigation.vim
-source ~/.config/nvim/configs/opts.vim
-source ~/.config/nvim/configs/keybindings.vim
-
-"Vim settings
-nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
-nnoremap <Leader>sv :w<CR>:source $MYVIMRC<CR>
-
-"Disable search highlight
-nnoremap <esc> :noh<CR>
-
-function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
-  endif
-endfunction
-
-function! MakeSession()
-    exe 'mks! .vim/session.vim'
-endfunction
-
-augroup vim_enter_exit
-		autocmd!
-		autocmd VimEnter * call SourceIfExists(".vim/vimrc.local")
-		autocmd VimEnter * nested call SourceIfExists(".vim/session.vim")
-augroup END
-
-nnoremap <Leader>ms :call MakeSession()<CR>
-
-"File types
-augroup glsl
-		autocmd!
-		autocmd BufRead,BufNewFile *.vs,*fs set ft=glsl
-augroup END
